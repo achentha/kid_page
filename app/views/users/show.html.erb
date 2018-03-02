@@ -1,0 +1,6 @@
+<h2>Welcome Back <%= @user.first_name %></h2>
+  <span>First Name: </span><%= @user.first_name %>
+  <span>Last Name: </span><%= @user.last_name %>
+  <span>Username: </span><%= @user.username %>
+  <p><%= button_to "Edit", "/users/#{@user.username}/edit", method: :get %></p>
+  <p><%= button_to 'Delete Account', @user.username, method: :delete, data: {confirm: 'Are you sure?'}%></p>

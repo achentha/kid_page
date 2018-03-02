@@ -1,0 +1,5 @@
+<h2>Our Members</h2>
+<% @users.each do |user| %>
+  <span>First Name: </span><%= user.first_name %>
+  <span>Last Name: </span><%= user.last_name %><br>
+<% end %>

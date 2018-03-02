@@ -1,0 +1,8 @@
+<h2>Creating a new user</h2>
+<%= form_for :user, url: '/users', method: 'post' do |f| %>
+<p><strong>First Name: </strong><%= f.text_field :first_name %></p>
+<p><strong>Last Name: </strong><%= f.text_field :last_name %></p>
+<p><strong>User Name: </strong><%= f.text_field :username %></p>
+<p><strong>Password: </strong><%= f.text_field :password %></p>
+<%= f.submit "create" %>
+<% end %>
