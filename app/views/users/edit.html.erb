@@ -1,5 +1,5 @@
 <h2>Editing Profile</h2>
-<%= form_for :user, url: "/users/#{@user.username}", method: 'patch' do |f| %>
+<%= form_for :user, url: "/users/#{@user.id}", method: 'patch' do |f| %>
 <p><strong>First Name: </strong><%= f.text_field :first_name %></p>
 <p><strong>Last Name: </strong><%= f.text_field :last_name %></p>
 <p><strong>User Name: </strong><%= f.text_field :username %></p>
