@@ -1,7 +1,12 @@
 <h2>Welcome <%= @user.first_name %></h2>
-  <span>First Name: </span><%= @user.first_name %></br>
-  <span>Last Name: </span><%= @user.last_name %></br>
-  <span>Username: </span><%= @user.username %></br>
-  <span>Account creation date: </span><%= @user.created_at.strftime("%m/%d/%Y at %I:%M%p") %>
-  <p><%= button_to "Edit", "/users/#{@user.id}/edit", method: :get %></p>
-  <p><%= button_to 'Delete Account', "/users/#{@user.id}", method: :delete, data: {confirm: 'Are you sure?'}%></p>
+<span><%= link_to "Edit", "/users/#{@user.id}/edit", method: :get %></span>
+<span><%= link_to 'Delete Account', "/users/#{@user.id}", method: :delete, data: {confirm: 'Are you sure?'}%></span></br>
+<span>First Name: </span><%= @user.first_name %></br>
+<span>Last Name: </span><%= @user.last_name %></br>
+<span>Username: </span><%= @user.username %></br>
+<span>Account creation date: </span><%= @user.created_at.strftime("%m/%d/%Y at %I:%M%p") %>
+</br>
+<h4><%= link_to 'My Todo List', "/users/#{@user.id}/todos", method: :get%></h4>
+<h4>My Todo List</h4>
+<p>You have <%= @user.todo_container.count%> item<%= @user.todo_container.count > 1 ? 's' : ''%>
+  in your Todo List</p>

@@ -10,6 +10,14 @@ class UsersController < ApplicationController
     user = User.create(user_params)
     if user
       login(user)
+      todo_container = TodoContainer.new
+      if todo_container
+        todo_container.displayCompleted = false
+        todo_container.count = 0
+        todo_container.save
+      else
+        flash[:error] = 'failed to create Todo Container'
+      end
       redirect_to user_path(user)
     else
       redirect_to new_user_path

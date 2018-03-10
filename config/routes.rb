@@ -12,4 +12,8 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new', as: 'login'
   get '/logout', to: 'sessions#destroy'
   post '/sessions', to: 'sessions#create'
+
+  get '/users/:id/todos', to: 'todo_items#index', as: 'todos'
+  get '/users/:id/todos/new', to: 'todo_items#new', as: 'new_todo'
+  post '/users/:id/todos', to: 'todo_items#create'
 end

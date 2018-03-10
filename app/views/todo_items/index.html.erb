@@ -1,0 +1,8 @@
+<h2>My Todos</h2>
+<span><%= link_to "Add Todo", "/users/#{@user.id}/todos/new", method: :get %></span><hr>
+
+<% @TodoItems.each do |todo| %>
+  <span><strong>Description: </strong></span><%= todo.description %></br>
+  <span><strong>Due Date: </strong></span><%= todo.due %></br>
+  <span><strong>Completed: </strong></span><%= todo.completed %></br><hr>
+<% end %>
