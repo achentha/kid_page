@@ -1,8 +1,27 @@
 <h2>My Todos</h2>
-<span><%= link_to "Add Todo", "/users/#{@user.id}/todos/new", method: :get %></span><hr>
+<p>You have <%= @user.todo_container.count %> Todo item<%= @user.todo_container.count  > 1? 's' : ''%></p>
+<% if @user.todo_container.displayCompleted %>
+  <p>Currently showing completed item
+    <%= button_to 'no completed items', "/users/#{@user.id}/todo_container/clear_display_completed", method: 'post'%>
+  </p>
+<% else %>
+  <p>Currently not showing completed item
+    <%= button_to 'show completed items', "/users/#{@user.id}/todo_container/set_display_completed", method: 'post'%>
+  </p>
+<% end %>
+<span><%= link_to "New Todo", "/users/#{@user.id}/todos/new", method: :get %></span><hr>
 
 <% @TodoItems.each do |todo| %>
-  <span><strong>Description: </strong></span><%= todo.description %></br>
-  <span><strong>Due Date: </strong></span><%= todo.due %></br>
-  <span><strong>Completed: </strong></span><%= todo.completed %></br><hr>
+  <% if @user.todo_container.displayCompleted || !todo.completed %>
+    <span><strong>Description: </strong></span><%= todo.description %></br>
+    <span><strong>Due Date: </strong></span><%= todo.due %></br>
+    <span><strong>Completed: </strong></span><%= todo.completed %></br>
+    <%= button_to 'edit', "/users/#{@user.id}/todos/#{todo.id}/edit", method: 'get'%>
+    <% if !todo.completed %>
+      <%= button_to 'set complete', "/users/#{@user.id}/todos/#{todo.id}/set_complete", method: 'post'%>
+    <% else %>
+      <%= button_to 'clear complete', "/users/#{@user.id}/todos/#{todo.id}/clear_complete", method: 'post'%>
+    <% end %>
+    <%= button_to 'delete', "/users/#{@user.id}/todos/#{todo.id}", method: 'delete', data: {confirm: 'Are you sure?'}%>
+    <% end %>
 <% end %>

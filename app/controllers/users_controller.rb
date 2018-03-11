@@ -14,6 +14,7 @@ class UsersController < ApplicationController
       if todo_container
         todo_container.displayCompleted = false
         todo_container.count = 0
+        todo_container.user = user
         todo_container.save
       else
         flash[:error] = 'failed to create Todo Container'
@@ -48,6 +49,20 @@ class UsersController < ApplicationController
     user = User.find_by(id: params[:id])
     user.destroy
     redirect_to new_user_path
+  end
+
+  def set_display_completed
+    user = User.find_by(id: params[:id])
+    user.todo_container.displayCompleted = true
+    user.todo_container.save
+    redirect_to todos_path user
+  end
+
+  def clear_display_completed
+    user = User.find_by(id: params[:id])
+    user.todo_container.displayCompleted = false
+    user.todo_container.save
+    redirect_to todos_path user
   end
 
   private

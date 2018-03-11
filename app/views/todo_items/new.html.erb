@@ -3,8 +3,8 @@
 <%= f.label :description %>
 <%= f.text_field :description %></br>
 <%= f.label :completed %>
-<%= f.text_field :completed %></br>
+<%= f.checkbox_field :completed %>
 <%= f.label :due %>
-<%= f.text_field :due %></br>
+<%= f.date_field :due %></br>
 <%= f.submit "create" %>
 <% end %>

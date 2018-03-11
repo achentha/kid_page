@@ -1,0 +1,8 @@
+<h2>Editing Todo Item</h2>
+<%= form_for :todo, url: "/users/#{@user.id}/todos/#{@todo.id}", method: 'put' do |f| %>
+<%= f.label :description %>
+<%= f.text_field :description %></br>
+<%= f.label :due %>
+<%= f.date_field :due %></br>
+<%= f.submit "save" %>
+<% end %>
