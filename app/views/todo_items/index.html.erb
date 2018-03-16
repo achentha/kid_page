@@ -1,27 +1,59 @@
-<h2>My Todos</h2>
-<p>You have <%= @user.todo_container.count %> Todo item<%= @user.todo_container.count  > 1? 's' : ''%></p>
+<div class="row">
+  <h2 class="col m10 s10 offset-m1 offset-s1 center">My Todos</h2>
+</div>
+
+<p class='indent-left'><%= link_to "Add Todo", "/users/#{@user.id}/todos/new",
+                           class: 'btn', method: :get %></p>
+
+<% active =  @user.todo_items.inject(0) do |acc, el| %>
+<%             el.completed ? acc : acc += 1%>
+<%           end %>
+
+<p class='indent-left'>You have <%= @user.todo_container.count%>
+                       item<%= @user.todo_container.count > 1 ? 's' : ''%>
+                       in your Todo List.
+                       <%= active %> <%= active > 1? 'are' : 'is'%> active.</p>
+
 <% if @user.todo_container.displayCompleted %>
-  <p>Currently showing completed item
-    <%= button_to 'no completed items', "/users/#{@user.id}/todo_container/clear_display_completed", method: 'post'%>
-  </p>
+  <p class='indent-left'>Currently showing completed item</p>
+  <%= button_to 'do not show completed items',
+      "/users/#{@user.id}/todo_container/clear_display_completed",
+      class: 'indent-left blue small-btn',
+      method: 'post'%>
 <% else %>
-  <p>Currently not showing completed item
-    <%= button_to 'show completed items', "/users/#{@user.id}/todo_container/set_display_completed", method: 'post'%>
-  </p>
+  <p class='indent-left'>Currently not showing completed item</p>
+  <%= button_to 'show completed items',
+      "/users/#{@user.id}/todo_container/set_display_completed",
+      class: 'indent-left green small-btn',
+      method: 'post'%>
 <% end %>
-<span><%= link_to "New Todo", "/users/#{@user.id}/todos/new", method: :get %></span><hr>
+
+<p><hr class='indent-left'></p>
 
 <% @TodoItems.each do |todo| %>
   <% if @user.todo_container.displayCompleted || !todo.completed %>
-    <span><strong>Description: </strong></span><%= todo.description %></br>
-    <span><strong>Due Date: </strong></span><%= todo.due %></br>
-    <span><strong>Completed: </strong></span><%= todo.completed %></br>
-    <%= button_to 'edit', "/users/#{@user.id}/todos/#{todo.id}/edit", method: 'get'%>
-    <% if !todo.completed %>
-      <%= button_to 'set complete', "/users/#{@user.id}/todos/#{todo.id}/set_complete", method: 'post'%>
-    <% else %>
-      <%= button_to 'clear complete', "/users/#{@user.id}/todos/#{todo.id}/clear_complete", method: 'post'%>
-    <% end %>
-    <%= button_to 'delete', "/users/#{@user.id}/todos/#{todo.id}", method: 'delete', data: {confirm: 'Are you sure?'}%>
-    <% end %>
+    <div class="row">
+      <div class="col m3 s10 offset-m1 offset-s1"><strong>Description: </strong></div>
+      <div class="col m7 s10 offset-s1"><%= todo.description %></div>
+    </div>
+    <div class="row">
+      <div class="col m3 s3 offset-m1 offset-s1"><strong>Due Date: </strong></div>
+      <div class="col m7 s7 offset-s1"><%= todo.due %></div>
+    </div>
+    <div class="row">
+      <div class="col m3 s3 offset-m1 offset-s1"><strong>Completed: </strong></div>
+      <div class="col m7 s7 offset-s1"><%= todo.completed %></div>
+    </div>
+
+    <div class="row">
+      <div class="col m1 s2 offset-m7 offset-s4"><%= button_to 'edit', "/users/#{@user.id}/todos/#{todo.id}/edit", method: 'get', class: 'yellow small-btn'%></div>
+      <% if !todo.completed %>
+        <div class="col m2 s4"><%= button_to 'set complete', "/users/#{@user.id}/todos/#{todo.id}/set_complete", method: 'post', class: "green small-btn"%></div>
+      <% else %>
+        <div class="col m2 s4"><%= button_to 'clear complete', "/users/#{@user.id}/todos/#{todo.id}/clear_complete", method: 'post', class: "blue small-btn"%></div>
+      <% end %>
+      <div class="col m1 s2"><%= button_to 'delete', "/users/#{@user.id}/todos/#{todo.id}", method: 'delete', data: {confirm: 'Are you sure?'}, class: "red small-btn"%></div>
+    </div>
+    <hr class='indent-left'>
+  <% end %>
 <% end %>

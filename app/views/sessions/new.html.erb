@@ -1,5 +1,17 @@
+<div class="row">
+  <h2 class="col m10 s10 offset-m1 offset-s1 center">User Login</h2>
+</div>
+
 <%= form_for :user, url: "/sessions", method: "post" do |f| %>
-<p><strong>User Name: </strong><%= f.text_field :username, placeholder: 'User Name' %></p>
-<p><strong>Password: </strong><%= f.password_field :password, placeholder: 'Password' %></p>
-<%= f.submit "Log In"%>
+  <div class="row">
+    <div class="col m3 s10 offset-m1 offset-s1"><%= f.label :username %></div>
+    <div class="col m7 s10 offset-s1"><%= f.text_field :username %></div>
+  </div>
+  <div class="row">
+    <div class="col m3 s10 offset-m1 offset-s1"><%= f.label :password %></div>
+    <div class="col m7 s10 offset-s1"><%= f.password_field :password %></div>
+  </div>
+  <div class="row">
+    <div class="col m2 s4 offset-m5 offset-s4"><%= f.submit "Log In", class: "center" %></div>
+  </div>
 <% end %>

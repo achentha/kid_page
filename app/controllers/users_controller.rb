@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def create
     user = User.create(user_params)
-    if user
+    if user.id
       login(user)
       todo_container = TodoContainer.new
       if todo_container
@@ -21,6 +21,7 @@ class UsersController < ApplicationController
       end
       redirect_to user_path(user)
     else
+      flash[:error] = user.errors.full_messages.join('. ')
       redirect_to new_user_path
     end
   end

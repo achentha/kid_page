@@ -1,12 +1,25 @@
-<h2>Welcome <%= @user.first_name %></h2>
-<span><%= link_to "Edit", "/users/#{@user.id}/edit", method: :get %></span>
-<span><%= link_to 'Delete Account', "/users/#{@user.id}", method: :delete, data: {confirm: 'Are you sure?'}%></span></br>
-<span>First Name: </span><%= @user.first_name %></br>
-<span>Last Name: </span><%= @user.last_name %></br>
-<span>Username: </span><%= @user.username %></br>
-<span>Account creation date: </span><%= @user.created_at.strftime("%m/%d/%Y at %I:%M%p") %>
-</br>
-<h4><%= link_to 'My Todo List', "/users/#{@user.id}/todos", method: :get%></h4>
-<h4>My Todo List</h4>
-<p>You have <%= @user.todo_container.count%> item<%= @user.todo_container.count > 1 ? 's' : ''%>
+<div class="row">
+  <h2 class="col m10 s10 offset-m1 offset-s1 center">Welcome <%= @user.first_name %></h2>
+  <span><%= link_to 'Delete Account', "/users/#{@user.id}", method: :delete, data: {confirm: 'Are you sure?'}, class: "float-right"%></span></br>
+  <span><%= link_to "Edit", "/users/#{@user.id}/edit", method: :get, class: "float-right" %></span>
+</div>
+
+<div class="row">
+  <div class="col m4 s10 offset-m2 offset-s1"><strong>First Name: </strong></div>
+  <div class="col m6 s10 offset-s1"><%= @user.first_name %></div>
+</div>
+<div class="row">
+  <div class="col m4 s10 offset-m2 offset-s1"><strong>Last Name: </strong></div>
+  <div class="col m6 s10 offset-s1"><%= @user.last_name %></div>
+</div>
+<div class="row">
+  <div class="col m4 s10 offset-m2 offset-s1"><strong>Username: </strong></div>
+  <div class="col m6 s10 offset-s1"><%= @user.username %></div>
+</div>
+<div class="row">
+  <div class="col m4 s10 offset-m2 offset-s1"><strong>Account creation date: </strong></div>
+  <div class="col m6 s10 offset-s1"><%= @user.created_at.strftime("%m/%d/%Y at %I:%M%p") %></div>
+</div>
+<h4 style="margin-left: 42px;"><%= link_to 'My Todo List', "/users/#{@user.id}/todos", method: :get%></h4>
+<p style="margin-left: 42px;">You have <%= @user.todo_container.count%> item<%= @user.todo_container.count > 1 ? 's' : ''%>
   in your Todo List</p>

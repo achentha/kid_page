@@ -3,22 +3,30 @@
   <head>
     <title>KidPage</title>
     <%= csrf_meta_tags %>
-
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css'>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <ul>
-      <li><%= link_to "Kid Page", root_path %></li>
-      <% if current_user %>
-        <li><%= link_to "Profile", user_path(current_user) %></li>
-        <li><%= link_to "Log Out", logout_path %></li>
-      <% else %>
-        <li><%= link_to "Create Account", new_user_path %></li>
-        <li><%= link_to "Log In", login_path %></li>
-      <% end %>
-    </ul>
+    <div class="top">
+      <div class='row'>
+        <%= link_to "Kid Page", root_path, class: "home col m7 s10 offset-s1" %>
+        <% if current_user %>
+          <%= link_to "Profile", user_path(current_user), class: "nav-item col m3 s4 offset-s4"%>
+          <%= link_to "Log Out", logout_path, class: "nav-item col m2 s4" %>
+        <% else %>
+          <%= link_to "Create Account", new_user_path, class: "nav-item col m3 s4 offset-s4" %>
+          <%= link_to "Log In", login_path, class: "nav-item col m2 s4" %>
+        <% end %>
+      </div>
+    </div>
+
     <% flash.each do |name, msg| %>
       <p><small><%= name.capitalize %>: <%= msg %></small></p>
     <% end %>

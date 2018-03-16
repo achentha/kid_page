@@ -19,6 +19,7 @@ class TodoItemsController < ApplicationController
       return
     end
     todo = TodoItem.new(todo_params)
+    todo.completed = false
     todo.todo_container = @user.todo_container
     todo.todo_container.count += 1
     todo.todo_container.save

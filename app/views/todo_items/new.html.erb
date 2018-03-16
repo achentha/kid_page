@@ -1,10 +1,16 @@
-<h2>Creating a Todo</h2>
+<div class="row">
+  <h2 class="col m10 s10 offset-m1 offset-s1 center">Creating a Todo Item</h2>
+</div>
 <%= form_for :todo, url: "/users/#{@user.id}/todos", method: 'post' do |f| %>
-<%= f.label :description %>
-<%= f.text_field :description %></br>
-<%= f.label :completed %>
-<%= f.checkbox_field :completed %>
-<%= f.label :due %>
-<%= f.date_field :due %></br>
-<%= f.submit "create" %>
+  <div class="row">
+    <div class="col m3 s10 offset-m1 offset-s1"><%= f.label :description %></div>
+    <div class="col m7 s10 offset-s1"><%= f.text_field :description %></div>
+  </div>
+  <div class="row">
+    <div class="col m3 s10 offset-m1 offset-s1"><%= f.label :due %></div>
+    <div class="col m7 s10 offset-s1"><%= f.date_field :due %></div>
+  </div>
+  <div class="row">
+    <div class="col m4 s4 offset-m4 offset-s4"><%= f.submit "create", class: "center" %></div>
+  </div>
 <% end %>

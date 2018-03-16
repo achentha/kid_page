@@ -1,12 +1,24 @@
-<h2>Editing Profile</h2>
+<div class="row">
+  <h2 class="col m10 s10 offset-m1 offset-s1 center">Editing Profile</h2>
+</div>
 <%= form_for :user, url: "/users/#{@user.id}", method: 'put' do |f| %>
-<%= f.label :first_name %>
-<%= f.text_field :first_name %></br>
-<%= f.label :last_name %>
-<%= f.text_field :last_name %></br>
-<%= f.label :username %>
-<%= f.text_field :username %></br>
-<%= f.label :password %>
-<%= f.password_field :password %></br>
-<%= f.submit "save" %>
+  <div class="row">
+    <div class="col m3 s10 offset-m1 offset-s1"><%= f.label :first_name %></div>
+    <div class="col m7 s10 offset-s1"><%= f.text_field :first_name %></div>
+  </div>
+  <div class="row">
+    <div class="col m3 s10 offset-m1 offset-s1"><%= f.label :last_name %></div>
+    <div class="col m7 s10 offset-s1"><%= f.text_field :last_name %></div>
+  </div>
+  <div class="row">
+    <div class="col m3 s10 offset-m1 offset-s1"><%= f.label :username %></div>
+    <div class="col m7 s10 offset-s1"><%= f.text_field :username %></div>
+  </div>
+  <div class="row">
+    <div class="col m3 s10 offset-m1 offset-s1"><%= f.label :password %></div>
+    <div class="col m7 s10 offset-s1"><%= f.password_field :password %></div>
+  </div>
+  <div class="row">
+    <div class="col m2 s4 offset-m5 offset-s4"><%= f.submit "save", class: "center" %></div>
+  </div>
 <% end %>
