@@ -15,7 +15,7 @@ Now he can:
 * Ruby on Rails
 * ActiveRecords/Postgresql for backend DB
 * bcrypt for password authentication
-* Materize for Responsiveness
+* Materialize for Responsiveness
 
 ## Deployment on Heroku
 * Here is the link to heroku: https://kid-page.herokuapp.com/
