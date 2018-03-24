@@ -1,3 +1,4 @@
+
 body {
   font-family: 'Roboto', sans-serif;
   background-color: #fff3e6;
@@ -20,6 +21,11 @@ body {
   text-align: left;
 }
 
+.h2-title {
+  text-align: center;
+  color: #f93;
+}
+
 .container {
   margin: 10px auto;
   display: grid;
@@ -29,8 +35,7 @@ body {
   grid-gap: 5px;
 }
 .image-div {
-  height: 200px;
-  width: 300px;
+  width: 100%;
 }
 
 .image {
